@@ -5,8 +5,8 @@ import { ArrowDownRight, ArrowUpRight, AlertTriangle } from "lucide-react";
 export const Route = createFileRoute("/finance")({
   head: () => ({
     meta: [
-      { title: "Finance — Aivio" },
-      { name: "description", content: "Cash flow, P&L, and financial alerts in one calm view." },
+      { title: "Финансы — Aivio" },
+      { name: "description", content: "Денежный поток, P&L и финансовые уведомления в одном спокойном интерфейсе." },
     ],
   }),
   component: FinancePage,
@@ -20,50 +20,50 @@ function FinancePage() {
     <AppLayout>
       <div className="p-6 md:p-8 max-w-[1400px] mx-auto">
         <PageHeader
-          title="Finance"
-          description="Real-time view of your business performance."
+          title="Финансы"
+          description="Показатели бизнеса в реальном времени."
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <Kpi label="Cash on hand" value="$284,120" change="+4.2%" up />
-          <Kpi label="Monthly burn" value="$48,300" change="+6.1%" up={false} />
-          <Kpi label="Net profit (MTD)" value="$36,820" change="+18.5%" up />
+          <Kpi label="Остаток на счетах" value="₽ 21 030 000" change="+4,2%" up />
+          <Kpi label="Месячное сжигание" value="₽ 3 575 000" change="+6,1%" up={false} />
+          <Kpi label="Чистая прибыль (МТД)" value="₽ 2 725 000" change="+18,5%" up />
         </div>
 
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5 shadow-soft">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="text-sm font-medium">Cash flow</p>
-                <p className="text-xs text-muted-foreground">Revenue vs expenses</p>
+                <p className="text-sm font-medium">Денежный поток</p>
+                <p className="text-xs text-muted-foreground">Выручка против расходов</p>
               </div>
               <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-primary" /> Revenue</span>
-                <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-muted-foreground/40" /> Expenses</span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-primary" /> Выручка</span>
+                <span className="inline-flex items-center gap-1.5"><span className="h-2 w-2 rounded-sm bg-muted-foreground/40" /> Расходы</span>
               </div>
             </div>
             <BarChart series1={cashflow} series2={expenses} />
           </div>
 
           <div className="rounded-xl border border-border bg-card p-5 shadow-soft">
-            <p className="text-sm font-medium mb-4">P&L Summary</p>
+            <p className="text-sm font-medium mb-4">Сводка P&L</p>
             <ul className="space-y-3 text-sm">
-              <PLRow label="Revenue" value="$284,500" />
-              <PLRow label="COGS" value="−$62,100" muted />
-              <PLRow label="Gross profit" value="$222,400" strong />
-              <PLRow label="Operating exp." value="−$148,200" muted />
+              <PLRow label="Выручка" value="₽ 21 050 000" />
+              <PLRow label="Себестоимость" value="−₽ 4 596 000" muted />
+              <PLRow label="Валовая прибыль" value="₽ 16 454 000" strong />
+              <PLRow label="Операционные расходы" value="−₽ 10 967 000" muted />
               <div className="pt-3 border-t border-border" />
-              <PLRow label="Net profit" value="$74,200" strong tone="success" />
+              <PLRow label="Чистая прибыль" value="₽ 5 487 000" strong tone="success" />
             </ul>
           </div>
         </div>
 
         <div className="mt-6 rounded-xl border border-border bg-card p-5 shadow-soft">
-          <p className="text-sm font-medium mb-4">Alerts</p>
+          <p className="text-sm font-medium mb-4">Уведомления</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <Alert title="Burn rate above target" sub="Operating expenses up 6% this month." />
-            <Alert title="2 invoices overdue" sub="$3,400 — Acme Co. & Helix Labs." />
-            <Alert title="Subscription renewal" sub="3 enterprise renewals in next 14 days." />
+            <Alert title="Сжигание выше плана" sub="Операционные расходы выросли на 6% в этом месяце." />
+            <Alert title="2 счёта просрочены" sub="₽ 252 000 — Acme Co. и Helix Labs." />
+            <Alert title="Продление подписки" sub="3 enterprise-продления в ближайшие 14 дней." />
           </div>
         </div>
       </div>

@@ -6,20 +6,20 @@ import { Bot, Mail, MessageSquare, Headphones, FileText, BarChart3, Plus } from 
 export const Route = createFileRoute("/agents")({
   head: () => ({
     meta: [
-      { title: "AI Agents — Aivio" },
-      { name: "description", content: "Deploy AI employees for outreach, support, sales operations and more." },
+      { title: "AI-агенты — Aivio" },
+      { name: "description", content: "Подключайте AI-сотрудников для рассылок, поддержки, продаж и аналитики." },
     ],
   }),
   component: AgentsPage,
 });
 
 const initialAgents = [
-  { id: 1, name: "Outreach Agent", desc: "Personalized cold email sequences at scale.", usage: "1,284 / 5,000 actions", on: true, icon: Mail },
-  { id: 2, name: "Support Agent", desc: "Auto-resolves tier-1 customer tickets.", usage: "412 / 1,000 conversations", on: true, icon: Headphones },
-  { id: 3, name: "Sales Assistant", desc: "Drafts proposals and follow-ups for your reps.", usage: "98 / 500 tasks", on: false, icon: MessageSquare },
-  { id: 4, name: "Analyst", desc: "Generates weekly business performance reports.", usage: "12 / 50 reports", on: true, icon: BarChart3 },
-  { id: 5, name: "Content Agent", desc: "Writes blog posts and social content from briefs.", usage: "24 / 100 drafts", on: false, icon: FileText },
-  { id: 6, name: "Research Agent", desc: "Researches accounts and enriches lead profiles.", usage: "640 / 2,000 lookups", on: true, icon: Bot },
+  { id: 1, name: "Агент рассылок", desc: "Персонализированные холодные письма в большом масштабе.", usage: "1 284 / 5 000 действий", on: true, icon: Mail },
+  { id: 2, name: "Агент поддержки", desc: "Автоматически закрывает обращения первого уровня.", usage: "412 / 1 000 диалогов", on: true, icon: Headphones },
+  { id: 3, name: "Помощник продаж", desc: "Готовит коммерческие предложения и follow-up за менеджеров.", usage: "98 / 500 задач", on: false, icon: MessageSquare },
+  { id: 4, name: "Аналитик", desc: "Формирует еженедельные отчёты по эффективности бизнеса.", usage: "12 / 50 отчётов", on: true, icon: BarChart3 },
+  { id: 5, name: "Контент-агент", desc: "Пишет статьи и посты для соцсетей по короткому брифу.", usage: "24 / 100 черновиков", on: false, icon: FileText },
+  { id: 6, name: "Агент исследований", desc: "Изучает компании и обогащает профили лидов.", usage: "640 / 2 000 запросов", on: true, icon: Bot },
 ];
 
 function AgentsPage() {
@@ -30,11 +30,11 @@ function AgentsPage() {
     <AppLayout>
       <div className="p-6 md:p-8 max-w-[1400px] mx-auto">
         <PageHeader
-          title="AI Agents"
-          description="Your always-on team of AI employees."
+          title="AI-агенты"
+          description="Ваша команда AI-сотрудников, работающая 24/7."
           actions={
             <button className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-              <Plus className="h-4 w-4" /> New agent
+              <Plus className="h-4 w-4" /> Новый агент
             </button>
           }
         />
@@ -49,7 +49,7 @@ function AgentsPage() {
                 <button
                   onClick={() => toggle(a.id)}
                   className={`relative h-5 w-9 rounded-full transition-colors ${a.on ? "bg-primary" : "bg-surface-elevated"}`}
-                  aria-label="Toggle agent"
+                  aria-label="Переключить агента"
                 >
                   <span
                     className={`absolute top-0.5 h-4 w-4 rounded-full bg-white transition-transform ${
@@ -63,7 +63,7 @@ function AgentsPage() {
               <div className="mt-4 pt-4 border-t border-border flex items-center justify-between">
                 <span className={`inline-flex items-center gap-1.5 text-xs ${a.on ? "text-success" : "text-muted-foreground"}`}>
                   <span className={`h-1.5 w-1.5 rounded-full ${a.on ? "bg-success" : "bg-muted-foreground"}`} />
-                  {a.on ? "Active" : "Paused"}
+                  {a.on ? "Активен" : "На паузе"}
                 </span>
                 <span className="text-xs text-muted-foreground">{a.usage}</span>
               </div>

@@ -15,26 +15,26 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Aivio" },
-      { name: "description", content: "Revenue, leads, conversion, AI insights and financial alerts at a glance." },
+      { title: "Главная — Aivio" },
+      { name: "description", content: "Выручка, лиды, конверсия, AI-инсайты и финансовые уведомления — на одном экране." },
     ],
   }),
   component: DashboardPage,
 });
 
 const stats = [
-  { label: "Revenue (MTD)", value: "$84,210", change: "+12.4%", up: true, icon: DollarSign },
-  { label: "New Leads", value: "1,284", change: "+8.1%", up: true, icon: Users },
-  { label: "Conversion", value: "4.7%", change: "+0.6%", up: true, icon: Target },
-  { label: "Avg. Deal Size", value: "$2,140", change: "−2.3%", up: false, icon: TrendingUp },
+  { label: "Выручка (с начала месяца)", value: "₽ 6 240 000", change: "+12,4%", up: true, icon: DollarSign },
+  { label: "Новые лиды", value: "1 284", change: "+8,1%", up: true, icon: Users },
+  { label: "Конверсия", value: "4,7%", change: "+0,6%", up: true, icon: Target },
+  { label: "Средний чек", value: "₽ 158 000", change: "−2,3%", up: false, icon: TrendingUp },
 ];
 
 const activity = [
-  { who: "Sofia Chen", what: "closed deal with Northwind", when: "2m ago" },
-  { who: "AI Agent · Outreach", what: "sent 124 personalized emails", when: "18m ago" },
-  { who: "Marcus Lee", what: "moved 3 leads to Negotiation", when: "1h ago" },
-  { who: "Stripe", what: "received payment of $4,200", when: "2h ago" },
-  { who: "AI Agent · Support", what: "resolved 9 tickets", when: "3h ago" },
+  { who: "София Чен", what: "закрыла сделку с Northwind", when: "2 мин назад" },
+  { who: "AI-агент · Outreach", what: "отправил 124 персональных письма", when: "18 мин назад" },
+  { who: "Маркус Ли", what: "перевёл 3 лида на этап «Переговоры»", when: "1 ч назад" },
+  { who: "Stripe", what: "получен платёж на ₽ 312 000", when: "2 ч назад" },
+  { who: "AI-агент · Поддержка", what: "решил 9 обращений", when: "3 ч назад" },
 ];
 
 function DashboardPage() {
@@ -42,8 +42,8 @@ function DashboardPage() {
     <AppLayout>
       <div className="p-6 md:p-8 max-w-[1400px] mx-auto">
         <PageHeader
-          title="Good morning, Alex"
-          description="Here's what's happening across your business today."
+          title="Доброе утро, Алексей"
+          description="Вот что сегодня происходит в вашем бизнесе."
         />
 
         {/* Stat cards */}
@@ -70,11 +70,11 @@ function DashboardPage() {
           <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5 shadow-soft">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="text-sm font-medium">Revenue overview</p>
-                <p className="text-xs text-muted-foreground">Last 30 days</p>
+                <p className="text-sm font-medium">Динамика выручки</p>
+                <p className="text-xs text-muted-foreground">Последние 30 дней</p>
               </div>
               <div className="flex gap-1 rounded-md border border-border p-0.5 text-xs">
-                {["7D", "30D", "90D"].map((p, i) => (
+                {["7Д", "30Д", "90Д"].map((p, i) => (
                   <button
                     key={p}
                     className={`px-2.5 py-1 rounded ${i === 1 ? "bg-surface-elevated text-foreground" : "text-muted-foreground"}`}
@@ -90,21 +90,21 @@ function DashboardPage() {
           <div className="rounded-xl border border-border bg-card p-5 shadow-soft">
             <div className="flex items-center gap-2 mb-1">
               <Sparkles className="h-4 w-4 text-primary" />
-              <p className="text-sm font-medium">AI Insights</p>
+              <p className="text-sm font-medium">AI-инсайты</p>
             </div>
-            <p className="text-xs text-muted-foreground mb-4">Generated 5 minutes ago</p>
+            <p className="text-xs text-muted-foreground mb-4">Сгенерировано 5 минут назад</p>
             <ul className="space-y-3 text-sm">
               <li className="flex gap-2.5">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
-                <span className="text-foreground/90">Pipeline velocity is up 18% — push more leads to Demo stage.</span>
+                <span className="text-foreground/90">Скорость воронки выросла на 18% — переводите больше лидов на этап «Демо».</span>
               </li>
               <li className="flex gap-2.5">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-secondary shrink-0" />
-                <span className="text-foreground/90">3 enterprise leads are stalled — recommend re-engagement sequence.</span>
+                <span className="text-foreground/90">3 enterprise-лида «застряли» — рекомендуем сценарий повторного вовлечения.</span>
               </li>
               <li className="flex gap-2.5">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-info shrink-0" />
-                <span className="text-foreground/90">Best send time today: 2:30 PM based on open rates.</span>
+                <span className="text-foreground/90">Лучшее время отправки сегодня: 14:30 — по статистике открытий.</span>
               </li>
             </ul>
           </div>
@@ -113,7 +113,7 @@ function DashboardPage() {
         {/* Bottom row */}
         <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div className="lg:col-span-2 rounded-xl border border-border bg-card p-5 shadow-soft">
-            <p className="text-sm font-medium mb-4">Activity feed</p>
+            <p className="text-sm font-medium mb-4">Лента активности</p>
             <ul className="divide-y divide-border">
               {activity.map((a, i) => (
                 <li key={i} className="flex items-center gap-3 py-3">
@@ -133,11 +133,11 @@ function DashboardPage() {
           </div>
 
           <div className="rounded-xl border border-border bg-card p-5 shadow-soft">
-            <p className="text-sm font-medium mb-4">Financial alerts</p>
+            <p className="text-sm font-medium mb-4">Финансовые уведомления</p>
             <div className="space-y-3">
-              <AlertRow icon={AlertTriangle} tone="warning" title="Cash runway: 8 months" sub="Burn increased 6% MoM" />
-              <AlertRow icon={CheckCircle2} tone="success" title="MRR target on track" sub="92% of monthly goal" />
-              <AlertRow icon={AlertTriangle} tone="info" title="2 invoices overdue" sub="$3,400 total" />
+              <AlertRow icon={AlertTriangle} tone="warning" title="Запас наличности: 8 месяцев" sub="Сжигание выросло на 6% м/м" />
+              <AlertRow icon={CheckCircle2} tone="success" title="План MRR в графике" sub="92% месячной цели" />
+              <AlertRow icon={AlertTriangle} tone="info" title="2 счёта просрочены" sub="Итого ₽ 252 000" />
             </div>
           </div>
         </div>
@@ -177,7 +177,6 @@ function AlertRow({
 }
 
 function SparkChart() {
-  // Smooth area chart, calm colors
   const points = [12, 18, 14, 22, 20, 28, 24, 32, 30, 38, 34, 42, 40, 48, 46, 54, 52, 60, 58, 66, 62, 70, 68, 76, 74, 82, 78, 86, 84, 92];
   const max = Math.max(...points);
   const min = Math.min(...points);

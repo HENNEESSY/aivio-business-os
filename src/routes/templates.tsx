@@ -4,27 +4,27 @@ import { AppLayout, PageHeader } from "@/components/AppLayout";
 export const Route = createFileRoute("/templates")({
   head: () => ({
     meta: [
-      { title: "Templates — Aivio" },
-      { name: "description", content: "Pre-built pipelines and workflows to launch fast." },
+      { title: "Шаблоны — Aivio" },
+      { name: "description", content: "Готовые воронки и сценарии для быстрого старта." },
     ],
   }),
   component: TemplatesPage,
 });
 
 const templates = [
-  { name: "SaaS Sales Pipeline", desc: "5-stage pipeline tuned for B2B SaaS deals.", stages: ["New", "Qualified", "Demo", "Negotiation", "Won"] },
-  { name: "Agency Onboarding", desc: "Onboard new clients with milestone tracking.", stages: ["Intake", "Kickoff", "Discovery", "Delivery", "Wrap"] },
-  { name: "E-commerce Funnel", desc: "Track customer journey end-to-end.", stages: ["Visitor", "Lead", "Cart", "Customer", "Repeat"] },
-  { name: "Recruiting Pipeline", desc: "From applicant to hire in one place.", stages: ["Applied", "Screen", "Interview", "Offer", "Hired"] },
-  { name: "Customer Success", desc: "Reduce churn with health scoring.", stages: ["Onboarding", "Adopting", "Healthy", "At-risk", "Churned"] },
-  { name: "Investor Pipeline", desc: "Manage fundraising rounds.", stages: ["Sourced", "Meeting", "Diligence", "Term sheet", "Closed"] },
+  { name: "Воронка продаж SaaS", desc: "5-этапная воронка под B2B SaaS-сделки.", stages: ["Новый", "Квалифицирован", "Демо", "Переговоры", "Выигран"] },
+  { name: "Онбординг агентства", desc: "Подключение новых клиентов с трекингом этапов.", stages: ["Заявка", "Кикофф", "Дискавери", "Реализация", "Финал"] },
+  { name: "Воронка e-commerce", desc: "Путь клиента от первого визита до повторной покупки.", stages: ["Визит", "Лид", "Корзина", "Клиент", "Повтор"] },
+  { name: "Подбор персонала", desc: "От отклика до найма в одном месте.", stages: ["Отклик", "Скрининг", "Интервью", "Оффер", "Нанят"] },
+  { name: "Customer Success", desc: "Снижение оттока через health-score.", stages: ["Онбординг", "Адаптация", "Здоров", "В зоне риска", "Ушёл"] },
+  { name: "Воронка инвесторов", desc: "Управление раундами инвестиций.", stages: ["Найден", "Встреча", "Due Diligence", "Term sheet", "Закрыт"] },
 ];
 
 function TemplatesPage() {
   return (
     <AppLayout>
       <div className="p-6 md:p-8 max-w-[1400px] mx-auto">
-        <PageHeader title="Templates" description="Start from a proven workflow and customize from there." />
+        <PageHeader title="Шаблоны" description="Стартуйте с готового сценария и адаптируйте под себя." />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {templates.map((t) => (
             <div key={t.name} className="rounded-xl border border-border bg-card p-5 shadow-soft hover:border-ring/40 transition-colors">
@@ -47,7 +47,7 @@ function TemplatesPage() {
               </div>
 
               <button className="mt-4 w-full rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                Use template
+                Использовать шаблон
               </button>
             </div>
           ))}

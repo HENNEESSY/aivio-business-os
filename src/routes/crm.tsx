@@ -7,7 +7,7 @@ export const Route = createFileRoute("/crm")({
   head: () => ({
     meta: [
       { title: "CRM — Aivio" },
-      { name: "description", content: "Visual pipeline with kanban board to manage leads and deals." },
+      { name: "description", content: "Визуальная воронка с канбан-доской для управления лидами и сделками." },
     ],
   }),
   component: CRMPage,
@@ -25,45 +25,45 @@ type Lead = {
 const columns: { id: string; title: string; tone: string; leads: Lead[] }[] = [
   {
     id: "new",
-    title: "New",
+    title: "Новые",
     tone: "bg-info",
     leads: [
-      { id: "1", name: "Emily Carter", company: "Northwind", value: "$4,200", email: "emily@northwind.io", owner: "AM" },
-      { id: "2", name: "James Park", company: "Lumen", value: "$1,800", email: "james@lumen.co", owner: "SC" },
+      { id: "1", name: "Эмилия Картер", company: "Northwind", value: "₽ 312 000", email: "emily@northwind.io", owner: "АМ" },
+      { id: "2", name: "Джеймс Парк", company: "Lumen", value: "₽ 134 000", email: "james@lumen.co", owner: "СЧ" },
     ],
   },
   {
     id: "qualified",
-    title: "Qualified",
+    title: "Квалифицированы",
     tone: "bg-secondary",
     leads: [
-      { id: "3", name: "Priya Shah", company: "Helix Labs", value: "$8,400", email: "priya@helix.com", owner: "ML" },
-      { id: "4", name: "David Kim", company: "Forge", value: "$3,100", email: "david@forge.io", owner: "AM" },
+      { id: "3", name: "Прия Шах", company: "Helix Labs", value: "₽ 624 000", email: "priya@helix.com", owner: "МЛ" },
+      { id: "4", name: "Дэвид Ким", company: "Forge", value: "₽ 230 000", email: "david@forge.io", owner: "АМ" },
     ],
   },
   {
     id: "demo",
-    title: "Demo",
+    title: "Демо",
     tone: "bg-primary",
     leads: [
-      { id: "5", name: "Anna Riedel", company: "Atlas Group", value: "$12,500", email: "anna@atlas.com", owner: "SC" },
+      { id: "5", name: "Анна Ридель", company: "Atlas Group", value: "₽ 928 000", email: "anna@atlas.com", owner: "СЧ" },
     ],
   },
   {
     id: "negotiation",
-    title: "Negotiation",
+    title: "Переговоры",
     tone: "bg-warning",
     leads: [
-      { id: "6", name: "Tomás Vega", company: "Cobalt", value: "$22,000", email: "tomas@cobalt.io", owner: "ML" },
-      { id: "7", name: "Lila Brooks", company: "Pine & Oak", value: "$6,750", email: "lila@pine.co", owner: "AM" },
+      { id: "6", name: "Томас Вега", company: "Cobalt", value: "₽ 1 632 000", email: "tomas@cobalt.io", owner: "МЛ" },
+      { id: "7", name: "Лила Брукс", company: "Pine & Oak", value: "₽ 502 000", email: "lila@pine.co", owner: "АМ" },
     ],
   },
   {
     id: "won",
-    title: "Won",
+    title: "Выиграны",
     tone: "bg-success",
     leads: [
-      { id: "8", name: "Owen Patel", company: "Vega", value: "$9,800", email: "owen@vega.io", owner: "SC" },
+      { id: "8", name: "Оуэн Патель", company: "Vega", value: "₽ 728 000", email: "owen@vega.io", owner: "СЧ" },
     ],
   },
 ];
@@ -75,10 +75,10 @@ function CRMPage() {
       <div className="p-6 md:p-8">
         <PageHeader
           title="CRM"
-          description="Track every deal across your pipeline."
+          description="Отслеживайте каждую сделку на всех этапах воронки."
           actions={
             <button className="inline-flex items-center gap-1.5 rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-              <Plus className="h-4 w-4" /> New lead
+              <Plus className="h-4 w-4" /> Новый лид
             </button>
           }
         />
@@ -137,25 +137,25 @@ function CRMPage() {
             <div className="p-5 space-y-4">
               <div className="grid grid-cols-2 gap-3">
                 <InfoTile icon={Mail} label="Email" value={active.email} />
-                <InfoTile icon={Phone} label="Phone" value="+1 (555) 010-2233" />
-                <InfoTile icon={Building2} label="Company" value={active.company} />
-                <InfoTile icon={Mail} label="Deal value" value={active.value} />
+                <InfoTile icon={Phone} label="Телефон" value="+7 (495) 010-22-33" />
+                <InfoTile icon={Building2} label="Компания" value={active.company} />
+                <InfoTile icon={Mail} label="Сумма сделки" value={active.value} />
               </div>
               <div>
-                <p className="text-xs font-medium text-muted-foreground mb-2">Notes</p>
+                <p className="text-xs font-medium text-muted-foreground mb-2">Заметки</p>
                 <textarea
                   rows={4}
-                  defaultValue="Interested in Pro plan, scheduled a demo next week."
+                  defaultValue="Интересуется тарифом Pro, демо запланировано на следующей неделе."
                   className="w-full rounded-md bg-surface border border-border p-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring/40"
                 />
               </div>
             </div>
             <div className="flex justify-end gap-2 px-5 py-4 border-t border-border">
               <button onClick={() => setActive(null)} className="rounded-md border border-border px-3 py-1.5 text-sm hover:bg-accent">
-                Close
+                Закрыть
               </button>
               <button className="rounded-md bg-primary px-3 py-1.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
-                Save changes
+                Сохранить
               </button>
             </div>
           </div>
