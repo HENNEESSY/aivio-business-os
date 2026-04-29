@@ -5,43 +5,76 @@ export const Route = createFileRoute("/templates")({
   head: () => ({
     meta: [
       { title: "Шаблоны — Aivio" },
-      { name: "description", content: "Готовые воронки и сценарии для быстрого старта." },
+      {
+        name: "description",
+        content:
+          "Готовые отраслевые шаблоны Aivio для запуска воронок, AI-сценариев и автоматизаций.",
+      },
     ],
   }),
   component: TemplatesPage,
 });
 
 const templates = [
-  { name: "Воронка продаж SaaS", desc: "5-этапная воронка под B2B SaaS-сделки.", stages: ["Новый", "Квалифицирован", "Демо", "Переговоры", "Выигран"] },
-  { name: "Онбординг агентства", desc: "Подключение новых клиентов с трекингом этапов.", stages: ["Заявка", "Кикофф", "Дискавери", "Реализация", "Финал"] },
-  { name: "Воронка e-commerce", desc: "Путь клиента от первого визита до повторной покупки.", stages: ["Визит", "Лид", "Корзина", "Клиент", "Повтор"] },
-  { name: "Подбор персонала", desc: "От отклика до найма в одном месте.", stages: ["Отклик", "Скрининг", "Интервью", "Оффер", "Нанят"] },
-  { name: "Customer Success", desc: "Снижение оттока через health-score.", stages: ["Онбординг", "Адаптация", "Здоров", "В зоне риска", "Ушёл"] },
-  { name: "Воронка инвесторов", desc: "Управление раундами инвестиций.", stages: ["Найден", "Встреча", "Due Diligence", "Term sheet", "Закрыт"] },
+  {
+    name: "Услуги",
+    desc: "Воронка для заявок с сайта, Telegram и WhatsApp с быстрым распределением по менеджерам.",
+    stages: ["Новая заявка", "Разбор AI", "Созвон", "КП", "Оплата"],
+  },
+  {
+    name: "Бьюти",
+    desc: "Запись клиентов, напоминания о визите, допродажи после услуги и возврат спящих клиентов.",
+    stages: ["Запись", "Подтверждение", "Визит", "Повтор", "LTV"],
+  },
+  {
+    name: "Консалтинг",
+    desc: "Работа с длинным циклом сделки, коммерческими предложениями и оплатой по этапам.",
+    stages: ["Лид", "Бриф", "КП", "Договор", "Счёт"],
+  },
+  {
+    name: "Онлайн-образование",
+    desc: "Регистрация на вебинар, AI-догрев после эфира и повторные продажи следующих потоков.",
+    stages: ["Регистрация", "Вебинар", "Оффер", "Оплата", "Повтор"],
+  },
+  {
+    name: "Ритейл",
+    desc: "Связка продаж, остатков, повторных покупок и акций для удержания клиентов.",
+    stages: ["Контакт", "Покупка", "Повтор", "Сегмент", "Возврат"],
+  },
+  {
+    name: "Цветочный бизнес",
+    desc: "Сценарии предзаказов, доставок, закупок и всплесков спроса в праздничные периоды.",
+    stages: ["Заказ", "Сборка", "Доставка", "Повтор", "Праздник"],
+  },
 ];
 
 function TemplatesPage() {
   return (
     <AppLayout>
-      <div className="p-6 md:p-8 max-w-[1400px] mx-auto">
-        <PageHeader title="Шаблоны" description="Стартуйте с готового сценария и адаптируйте под себя." />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {templates.map((t) => (
-            <div key={t.name} className="rounded-xl border border-border bg-card p-5 shadow-soft hover:border-ring/40 transition-colors">
-              <p className="text-sm font-semibold">{t.name}</p>
-              <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{t.desc}</p>
+      <div className="mx-auto max-w-[1400px] p-6 md:p-8">
+        <PageHeader title="Шаблоны" description="Запускайте Aivio с готового отраслевого сценария и адаптируйте под свой бизнес." />
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {templates.map((template) => (
+            <div
+              key={template.name}
+              className="rounded-xl border border-border bg-card p-5 shadow-soft transition-colors hover:border-ring/40"
+            >
+              <p className="text-sm font-semibold">{template.name}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{template.desc}</p>
 
-              <div className="mt-4 rounded-lg bg-surface border border-border p-3">
+              <div className="mt-4 rounded-lg border border-border bg-surface p-3">
                 <div className="flex items-center gap-1">
-                  {t.stages.map((s, i) => (
-                    <div key={s} className="flex items-center gap-1 flex-1">
-                      <div className={`flex-1 h-1.5 rounded-full ${i === 0 ? "bg-primary" : "bg-muted-foreground/20"}`} />
+                  {template.stages.map((stage, index) => (
+                    <div key={stage} className="flex flex-1 items-center gap-1">
+                      <div className={`h-1.5 flex-1 rounded-full ${index === 0 ? "bg-primary" : "bg-muted-foreground/20"}`} />
                     </div>
                   ))}
                 </div>
                 <div className="mt-2 flex justify-between text-[10px] text-muted-foreground">
-                  {t.stages.map((s) => (
-                    <span key={s} className="truncate" style={{ maxWidth: `${100 / t.stages.length}%` }}>{s}</span>
+                  {template.stages.map((stage) => (
+                    <span key={stage} className="truncate" style={{ maxWidth: `${100 / template.stages.length}%` }}>
+                      {stage}
+                    </span>
                   ))}
                 </div>
               </div>

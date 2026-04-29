@@ -1,5 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
+import { HeadContent, Link, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
 import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
@@ -16,7 +15,7 @@ function NotFoundComponent() {
             to="/"
             className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
           >
-            На главную
+            В центр управления
           </Link>
         </div>
       </div>
@@ -29,14 +28,22 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aivio — AI-операционная система для бизнеса" },
-      { name: "description", content: "Aivio объединяет CRM, входящие, AI-агентов, интеграции и финансы в одном спокойном премиум-интерфейсе." },
+      { title: "Aivio — AI Business OS для малого и среднего бизнеса" },
+      {
+        name: "description",
+        content:
+          "Aivio объединяет клиентов, inbox, AI-сотрудников, автоматизации, финансы и интеграции в одной системе.",
+      },
       { name: "author", content: "Aivio" },
-      { property: "og:title", content: "Aivio — AI-операционная система для бизнеса" },
-      { property: "og:description", content: "CRM, сообщения, AI-сотрудники, интеграции и финансы — в одном месте." },
+      { property: "og:title", content: "Aivio — AI Business OS для малого и среднего бизнеса" },
+      {
+        property: "og:description",
+        content:
+          "Клиенты, сообщения, AI-сотрудники, автоматизации, финансы и интеграции — в одном интерфейсе.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@aivio" },
     ],
     links: [
       {
