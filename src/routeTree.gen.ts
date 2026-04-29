@@ -14,7 +14,8 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as IntegrationsRouteImport } from './routes/integrations'
 import { Route as InboxRouteImport } from './routes/inbox'
 import { Route as FinanceRouteImport } from './routes/finance'
-import { Route as CrmRouteImport } from './routes/crm'
+import { Route as ClientsRouteImport } from './routes/clients'
+import { Route as AutomationsRouteImport } from './routes/automations'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -43,9 +44,14 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CrmRoute = CrmRouteImport.update({
-  id: '/crm',
-  path: '/crm',
+const ClientsRoute = ClientsRouteImport.update({
+  id: '/clients',
+  path: '/clients',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationsRoute = AutomationsRouteImport.update({
+  id: '/automations',
+  path: '/automations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgentsRoute = AgentsRouteImport.update({
@@ -62,7 +68,8 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/agents': typeof AgentsRoute
-  '/crm': typeof CrmRoute
+  '/automations': typeof AutomationsRoute
+  '/clients': typeof ClientsRoute
   '/finance': typeof FinanceRoute
   '/inbox': typeof InboxRoute
   '/integrations': typeof IntegrationsRoute
@@ -72,7 +79,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/agents': typeof AgentsRoute
-  '/crm': typeof CrmRoute
+  '/automations': typeof AutomationsRoute
+  '/clients': typeof ClientsRoute
   '/finance': typeof FinanceRoute
   '/inbox': typeof InboxRoute
   '/integrations': typeof IntegrationsRoute
@@ -83,7 +91,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/agents': typeof AgentsRoute
-  '/crm': typeof CrmRoute
+  '/automations': typeof AutomationsRoute
+  '/clients': typeof ClientsRoute
   '/finance': typeof FinanceRoute
   '/inbox': typeof InboxRoute
   '/integrations': typeof IntegrationsRoute
@@ -95,7 +104,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/agents'
-    | '/crm'
+    | '/automations'
+    | '/clients'
     | '/finance'
     | '/inbox'
     | '/integrations'
@@ -105,7 +115,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/agents'
-    | '/crm'
+    | '/automations'
+    | '/clients'
     | '/finance'
     | '/inbox'
     | '/integrations'
@@ -115,7 +126,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/agents'
-    | '/crm'
+    | '/automations'
+    | '/clients'
     | '/finance'
     | '/inbox'
     | '/integrations'
@@ -126,7 +138,8 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AgentsRoute: typeof AgentsRoute
-  CrmRoute: typeof CrmRoute
+  AutomationsRoute: typeof AutomationsRoute
+  ClientsRoute: typeof ClientsRoute
   FinanceRoute: typeof FinanceRoute
   InboxRoute: typeof InboxRoute
   IntegrationsRoute: typeof IntegrationsRoute
@@ -171,11 +184,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/crm': {
-      id: '/crm'
-      path: '/crm'
-      fullPath: '/crm'
-      preLoaderRoute: typeof CrmRouteImport
+    '/clients': {
+      id: '/clients'
+      path: '/clients'
+      fullPath: '/clients'
+      preLoaderRoute: typeof ClientsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automations': {
+      id: '/automations'
+      path: '/automations'
+      fullPath: '/automations'
+      preLoaderRoute: typeof AutomationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agents': {
@@ -198,7 +218,8 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgentsRoute: AgentsRoute,
-  CrmRoute: CrmRoute,
+  AutomationsRoute: AutomationsRoute,
+  ClientsRoute: ClientsRoute,
   FinanceRoute: FinanceRoute,
   InboxRoute: InboxRoute,
   IntegrationsRoute: IntegrationsRoute,
@@ -208,3 +229,12 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
