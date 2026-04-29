@@ -6,25 +6,25 @@ import { Send, Sparkles, Paperclip, Search } from "lucide-react";
 export const Route = createFileRoute("/inbox")({
   head: () => ({
     meta: [
-      { title: "Inbox — Aivio" },
-      { name: "description", content: "Unified messaging with AI context and CRM data on every conversation." },
+      { title: "Входящие — Aivio" },
+      { name: "description", content: "Единая лента сообщений с AI-контекстом и данными CRM по каждому диалогу." },
     ],
   }),
   component: InboxPage,
 });
 
 const conversations = [
-  { id: 1, name: "Emily Carter", company: "Northwind", preview: "Sounds great — can we move the demo to Thursday?", time: "2m", unread: true },
-  { id: 2, name: "Tomás Vega", company: "Cobalt", preview: "Sending over the redlined contract this afternoon.", time: "18m", unread: true },
-  { id: 3, name: "Anna Riedel", company: "Atlas Group", preview: "Thanks for the proposal!", time: "1h", unread: false },
-  { id: 4, name: "David Kim", company: "Forge", preview: "Loop in your CTO when ready.", time: "3h", unread: false },
-  { id: 5, name: "Priya Shah", company: "Helix Labs", preview: "We're aligned on pricing.", time: "Yesterday", unread: false },
+  { id: 1, name: "Эмилия Картер", company: "Northwind", preview: "Отлично — можем перенести демо на четверг?", time: "2 мин", unread: true },
+  { id: 2, name: "Томас Вега", company: "Cobalt", preview: "Сегодня после обеда пришлю договор с правками.", time: "18 мин", unread: true },
+  { id: 3, name: "Анна Ридель", company: "Atlas Group", preview: "Спасибо за коммерческое предложение!", time: "1 ч", unread: false },
+  { id: 4, name: "Дэвид Ким", company: "Forge", preview: "Подключите вашего CTO, когда будете готовы.", time: "3 ч", unread: false },
+  { id: 5, name: "Прия Шах", company: "Helix Labs", preview: "По цене договорились.", time: "Вчера", unread: false },
 ];
 
 const thread = [
-  { from: "them", text: "Hi Alex — quick follow up on our call.", time: "10:24" },
-  { from: "me", text: "Hey Emily, totally — I've put together the deck you asked for.", time: "10:27" },
-  { from: "them", text: "Sounds great — can we move the demo to Thursday?", time: "10:29" },
+  { from: "them", text: "Привет, Алексей — хотела уточнить по нашему звонку.", time: "10:24" },
+  { from: "me", text: "Привет, Эмилия! Подготовил презентацию, о которой ты просила.", time: "10:27" },
+  { from: "them", text: "Отлично — можем перенести демо на четверг?", time: "10:29" },
 ];
 
 function InboxPage() {
@@ -32,13 +32,12 @@ function InboxPage() {
   return (
     <AppLayout>
       <div className="flex h-[calc(100vh-3.5rem)]">
-        {/* Conversation list */}
         <div className="w-72 shrink-0 border-r border-border flex flex-col">
           <div className="p-3 border-b border-border">
             <div className="relative">
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
               <input
-                placeholder="Search messages"
+                placeholder="Поиск по сообщениям"
                 className="w-full h-8 rounded-md bg-surface border border-border pl-8 pr-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring/40"
               />
             </div>
@@ -65,7 +64,6 @@ function InboxPage() {
           </div>
         </div>
 
-        {/* Chat */}
         <div className="flex-1 flex flex-col min-w-0">
           <div className="h-14 border-b border-border px-5 flex items-center justify-between">
             <div>
@@ -95,7 +93,7 @@ function InboxPage() {
               </button>
               <textarea
                 rows={1}
-                placeholder="Write a message…"
+                placeholder="Напишите сообщение…"
                 className="flex-1 bg-transparent resize-none text-sm focus:outline-none placeholder:text-muted-foreground"
               />
               <button className="h-8 w-8 rounded-md bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90">
@@ -105,7 +103,6 @@ function InboxPage() {
           </div>
         </div>
 
-        {/* Right panel */}
         <div className="hidden xl:flex w-80 shrink-0 border-l border-border flex-col">
           <div className="p-5 border-b border-border">
             <div className="flex items-center gap-3">
@@ -122,24 +119,24 @@ function InboxPage() {
           <div className="p-5 border-b border-border">
             <div className="flex items-center gap-1.5 mb-3">
               <Sparkles className="h-3.5 w-3.5 text-primary" />
-              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">AI Summary</p>
+              <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">AI-резюме</p>
             </div>
             <p className="text-sm text-foreground/90">
-              Emily is engaged and ready to schedule. She prefers Thursday afternoons. High intent — recommend sending the deck and a calendar link.
+              Эмилия вовлечена и готова назначить встречу. Предпочитает четверг во второй половине дня. Высокий интерес — рекомендуем отправить презентацию и ссылку на календарь.
             </p>
             <button className="mt-3 w-full rounded-md border border-border bg-surface px-3 py-1.5 text-xs font-medium hover:bg-accent">
-              Draft reply with AI
+              Составить ответ с AI
             </button>
           </div>
 
           <div className="p-5">
-            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">CRM Data</p>
+            <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground mb-3">Данные CRM</p>
             <dl className="space-y-2 text-sm">
-              <Row k="Stage" v="Qualified" />
-              <Row k="Owner" v="Alex Morgan" />
-              <Row k="Deal value" v="$4,200" />
-              <Row k="Last contact" v="Yesterday" />
-              <Row k="Source" v="Inbound — Website" />
+              <Row k="Этап" v="Квалифицирован" />
+              <Row k="Ответственный" v="Алексей Морозов" />
+              <Row k="Сумма сделки" v="₽ 312 000" />
+              <Row k="Последний контакт" v="Вчера" />
+              <Row k="Источник" v="Входящий — сайт" />
             </dl>
           </div>
         </div>
